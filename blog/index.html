@@ -1,0 +1,39 @@
+---
+layout: default
+title: Blog
+---
+<section class="page-header fade-in">
+  <div class="container">
+    <h1>Blog</h1>
+    <p class="page-subtitle">Thoughts on work, identity, and the spaces in between.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container content-narrow">
+
+    {% if site.posts.size > 0 %}
+    <div class="blog-list">
+      {% for post in site.posts %}
+      <a href="{{ post.url | relative_url }}" class="blog-item">
+        <div class="blog-item-meta">
+          <time>{{ post.date | date: "%B %-d, %Y" }}</time>
+          {% if post.lang == "zh" %}
+          <span class="lang-tag">中文</span>
+          {% endif %}
+        </div>
+        <h2 class="blog-item-title">{{ post.title }}</h2>
+        {% if post.subtitle %}
+        <p class="blog-item-subtitle">{{ post.subtitle }}</p>
+        {% endif %}
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <p>New writing coming soon. Stay tuned.</p>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
